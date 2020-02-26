@@ -19,7 +19,7 @@ function Nav(props) {
                     <Link className="white-text" to="/bookmarks" >Bookmarks</Link> 
                 </ul>
                 <ul className="nav-icons right hide-on-med-and-down">
-                <i className="material-icons prefix">face</i>
+                <i className="material-icons prefix">face</i> 
                     <Link to={'/tickets'}>Tickets</Link>
                 </ul>
                 <ul className="nav-icons right hide-on-med-and-down">
