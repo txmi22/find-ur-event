@@ -3,11 +3,12 @@ import Nav from '../Nav/Nav';
 import axios from 'axios';
 
 function Tickets (props) {
-    const [tickets, setTickets] = useState([]) 
+    const [tickets, setTickets] = useState([])
+    const [count, setCount] = useState(0)
 
     useEffect(() => {
         getTickets()
-    }, [])
+    }, [count])
 
     const getTickets = () => {
         
@@ -37,6 +38,10 @@ function Tickets (props) {
                             <span className="card-title grey-text text-darken-4">{event.name}<i className="material-icons right">close</i></span>
                             <p>Congrats, you're going to this event!</p>
                             <span className="material-icons" onClick={() => props.viewEventInfo(event.id)} style={{cursor: "pointer"}}>info</span>
+                            <p>{count}</p>
+                            <p>How many are going?</p>
+                            <button onClick={() => setCount(count + 1)}>+</button>
+                            <button onClick={() => setCount(count - 1)}>-</button>
                           </div>
                           </div>
                         ))}

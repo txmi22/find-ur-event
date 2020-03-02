@@ -1,10 +1,21 @@
+
 const bcrypt = require('bcryptjs');
+const EMAIL = process.env.EMAIL
+
+const mailOptions = {
+    from: EMAIL,
+    to: '',
+    subject: 'Thanks you for registering',
+    text: ''
+ }
 
 module.exports = {
     register: async(req, res) => {
         const {email , f_name, l_name, password} = req.body,
               db = req.app.get('db'),
               {session} = req;
+              transporter = req.app.get('transporter')
+
 
         let user = await db.user.check_user(email);
        
@@ -15,8 +26,18 @@ module.exports = {
         const hash = bcrypt.hashSync(password, salt);
         let newUser = await db.user.register_user([email, f_name, l_name, hash]);
 
+        const customMailOptions = {...mailOptions, to: email, text: `Thank you for registering ${f_name} ${l_name}.`}
+                    transporter.sendMail(customMailOptions, (err, data) => {
+                       if(err) {
+                          console.log(err)
+                       } else {
+                          console.log('email confirmation sent')
+                          console.log(data)
+                       }
+                    })
+                    
         session.user = newUser[0]
-        res.status(201).send(session.user); 
+        res.status(201).send(session.user);
     },
     login: async(req, res) => {
         const {email, password} = req.body

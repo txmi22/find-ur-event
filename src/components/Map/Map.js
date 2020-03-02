@@ -111,84 +111,54 @@
 
 
 
+const AnyReactComponent = ({ text }) =>(
+<div style={{
+    color: 'white', 
+    background: 'grey',
+    padding: '15px 10px',
+    display: 'inline-flex',
+    textAlign: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: '100%',
+    transform: 'translate(-50%, -50%)'
+}}>
+    {text}
+</div>
+); 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const AnyReactComponent = ({ text }) =>(
-// <div style={{
-//     color: 'white', 
-//     background: 'grey',
-//     padding: '15px 10px',
-//     display: 'inline-flex',
-//     textAlign: 'center',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//     borderRadius: '100%',
-//     transform: 'translate(-50%, -50%)'
-// }}>
-//     {text}
-// </div>
-// ); 
-
-// class Map extends Component {
-//     static defaultProps = {
-//         center: {
-//           lat: 59.95,
-//           lng: 30.33,
-//           key: process.env.REACT_APP_GOOGLE_KEY
-//         },
-//         zoom: 11
-//       };
+class Map extends Component {
+    static defaultProps = {
+        center: {
+          lat: 59.95,
+          lng: 30.33,
+          key: process.env.REACT_APP_GOOGLE_KEY
+        },
+        zoom: 11
+      };
     
   
     
-//     render() {
-//         return (
+    render() {
+        return (
             
-//             <div style={{ height: '100vh', width: '100%'}}>
-//         <Nav />
-//         <GoogleMapReact
-//           bootstrapURLKeys={this.props.key}
-//           defaultCenter={this.props.center}
-//           defaultZoom={this.props.zoom}
+            <div style={{ height: '100vh', width: '100%'}}>
+        <Nav />
+        <GoogleMapReact
+          bootstrapURLKeys={this.props.key}
+          defaultCenter={this.props.center}
+          defaultZoom={this.props.zoom}
           
-//           >
-//           <AnyReactComponent
-//             lat={59.955413}
-//             lng={30.337844}
-//             text="My Marker"
-//             />
-//         </GoogleMapReact>
-//       </div>
-//     );
-// }
-// }
+          >
+          <AnyReactComponent
+            lat={59.955413}
+            lng={30.337844}
+            text="My Marker"
+            />
+        </GoogleMapReact>
+      </div>
+    );
+}
+}
 
-// export default Map;
+export default Map;

@@ -1,9 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
+
 
 function EventList (props) {
-    if(props.loading){
-        return<h1>Loading</h1>
-    }
+    const [toggle, setToggle] = useState(false);
+
+
+
+    // if(props.loading){
+    //     return<h1>Loading</h1>
+    // }
 // if(props.events[0]){
 //     console.dir(props.events[0]._embedded.venues[0].city.name)
 // }
@@ -22,9 +27,13 @@ function EventList (props) {
                                 </div>
                                 <div className="card-container">
                                     <span className="card-title">{event.name}</span>
+                    
                                     <div>
                                         <button className="btn-floating fab waves-effect waves-light deep-purple darken-4 right"><i className="material-icons" onClick={() => props.viewEventInfo(event.id)} style={{cursor: "pointer"}}>info</i></button>
                                         <button className="btn-floating fab waves-effect waves-light deep-purple darken-4 right"><i className="material-icons" onClick={()=> props.addEvent(event)} style={{cursor: "pointer"}}>favorite</i></button>
+                                        
+                                        { toggle ? <button className="btn-floating fab waves-effect waves-light deep-purple darken-4 right"><i className="material-icons" onClick={() => setToggle(false)}>thumb_up</i></button> : <button className="btn-floating fab waves-effect waves-light deep-purple darken-4 right"><i className="material-icons" onClick={() => setToggle(true)}>thumb_down</i></button>
+                                        }   
                                     </div>
                                 </div>
                             </div>

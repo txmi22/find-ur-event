@@ -3,7 +3,6 @@ import axios from 'axios';
 import { getUser } from '../../redux/userReducer';
 import { connect } from 'react-redux';
 import logo from '../logo/Logo.png'
-
 export class Login extends Component {
     constructor(){
         super(); 
@@ -57,6 +56,7 @@ export class Login extends Component {
                             backgroundSize: 'cover',
                             backgroundRepeat: 'no-repeat',
                              }} >
+        
                 <div className='login-container' style={{margin: 'auto'}} >
                     {loginToggle ?
                             <div className="row login" >
